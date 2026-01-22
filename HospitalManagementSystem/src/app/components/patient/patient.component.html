@@ -1,0 +1,48 @@
+<h2>Patients</h2>
+
+<!-- Add Patient Form -->
+<div class="add-patient-form">
+  <h3>Add New Patient</h3>
+  <form (ngSubmit)="addPatient()">
+    <input type="text" [(ngModel)]="newPatient.name" name="name" placeholder="Name" required>
+    <input type="text" [(ngModel)]="newPatient.age" name="age" placeholder="Age" required>
+    <input type="text" [(ngModel)]="newPatient.bloodGroup" name="bloodGroup" placeholder="Blood Group" required>
+    <input type="text" [(ngModel)]="newPatient.prescription" name="prescription" placeholder="Prescription" required>
+    <input type="text" [(ngModel)]="newPatient.dose" name="dose" placeholder="Dose" required>
+    <input type="text" [(ngModel)]="newPatient.fees" name="fees" placeholder="Fees" required>
+    <input type="text" [(ngModel)]="newPatient.urgency" name="urgency" placeholder="Urgency" required>
+    <button type="submit">Add Patient</button>
+  </form>
+  <p style="color:red">{{errorMsg}}</p>
+</div>
+
+<!-- Patient List -->
+<div class="patient-list">
+  <h3>Patient List</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Blood Group</th>
+        <th>Prescription</th>
+        <th>Dose</th>
+        <th>Fees</th>
+        <th>Urgency</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let patient of patients">
+        <td>{{patient.id}}</td>
+        <td>{{patient.name}}</td>
+        <td>{{patient.age}}</td>
+        <td>{{patient.bloodGroup}}</td>
+        <td>{{patient.prescription}}</td>
+        <td>{{patient.dose}}</td>
+        <td>{{patient.fees}}</td>
+        <td>{{patient.urgency}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

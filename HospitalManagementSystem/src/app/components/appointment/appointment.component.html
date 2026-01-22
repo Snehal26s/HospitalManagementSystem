@@ -1,0 +1,49 @@
+<h2>Book Appointment</h2>
+
+<form #appointmentForm="ngForm" (ngSubmit)="addAppointment()" novalidate>
+  <input
+    type="text"
+    placeholder="Patient Name"
+    [(ngModel)]="newAppointment.patientName"
+    name="patientName"
+    required
+  />
+
+  <input
+    type="text"
+    placeholder="Doctor Name"
+    [(ngModel)]="newAppointment.doctorName"
+    name="doctorName"
+    required
+  />
+
+  <input
+    type="date"
+    [(ngModel)]="newAppointment.appointmentDate"
+    name="appointmentDate"
+    required
+  />
+
+  <input
+    type="time"
+    [(ngModel)]="newAppointment.appointmentTime"
+    name="appointmentTime"
+    required
+  />
+
+  <input
+    type="text"
+    placeholder="Reason"
+    [(ngModel)]="newAppointment.reason"
+    name="reason"
+    required
+  />
+
+  <!-- ✅ Disable button until form is valid -->
+  <button type="submit" [disabled]="!appointmentForm.valid">Book Appointment</button>
+</form>
+
+<!-- ✅ Back button -->
+<div class="back-btn-container">
+<button routerLink="/admin-dashboard" class="back-btn">⬅ Back to Dashboard</button>
+</div>

@@ -1,0 +1,29 @@
+<div class="add-patient-container">
+  <h2>{{ editPatient ? 'Edit Patient' : 'Add New Patient' }}</h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <input type="text" [(ngModel)]="patient.name" name="name" placeholder="Name" required />
+    <input type="text" [(ngModel)]="patient.age" name="age" placeholder="Age" required />
+    <input type="text" [(ngModel)]="patient.bloodGroup" name="bloodGroup" placeholder="Blood Group" required />
+    <input type="text" [(ngModel)]="patient.prescription" name="prescription" placeholder="Prescription" required />
+    <input type="text" [(ngModel)]="patient.dose" name="dose" placeholder="Dose" required />
+    <input type="text" [(ngModel)]="patient.fees" name="fees" placeholder="Fees" required />
+    
+    <select [(ngModel)]="patient.urgency" name="urgency" required>
+      <option value="" disabled>Select Urgency</option>
+      <option value="Low">Low</option>
+      <option value="Medium">Medium</option>
+      <option value="High">High</option>
+    </select>
+
+    <button type="submit">{{ editPatient ? 'Update' : 'Add Patient' }}</button>
+    <button type="button" *ngIf="editPatient" (click)="cancelEdit()">Cancel</button>
+  </form>
+
+  <p class="success-msg">{{ successMsg }}</p>
+  <p class="error-msg">{{ errorMsg }}</p>
+</div>
+
+<div class="back-btn-container">
+  <button routerLink="/admin-dashboard" class="back-btn">⬅ Back to Dashboard</button>
+</div>

@@ -1,0 +1,47 @@
+<h2>Doctor Dashboard - Today's Appointments</h2>
+<table border="1" width="100%" style="border-collapse: collapse;">
+  <tr>
+    <th>Patient Name</th>
+    <th>Time</th>
+    <th>Reason</th>
+    <th>Prescription</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let appointment of appointments">
+    <td>{{ appointment.patientName }}</td>
+    <td>{{ appointment.time }}</td>
+    <td>{{ appointment.reason }}</td>
+    <td>{{ appointment.prescription || 'Not Added' }}</td>
+    <td>
+      <button (click)="addPrescription(appointment)">Add Prescription</button>
+    </td>
+  </tr>
+</table>
+<button (click)="logout()" 
+          style="background-color: #f44336; color: white; border: none; padding: 8px 14px; border-radius: 5px; cursor: pointer;">
+    Logout
+  </button>
+
+<!-- Prescription form (appears only when selected) -->
+<div *ngIf="selectedAppointment"
+     style="margin-top: 20px; border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+  <h3>Add Prescription for {{ selectedAppointment.patientName }}</h3>
+
+  <textarea [(ngModel)]="prescriptionText"
+            rows="4"
+            cols="50"
+            placeholder="Enter prescription details..."></textarea>
+  <br><br>
+
+  <button (click)="savePrescription()"
+          style="background-color: green; color: white; padding: 6px 12px; border: none; border-radius: 5px;">
+    Save Prescription
+  </button>
+
+  <button (click)="cancelPrescription()"
+          style="margin-left: 10px; background-color: gray; color: white; padding: 6px 12px; border: none; border-radius: 5px;">
+    Cancel
+  </button>
+</div>
+
+
