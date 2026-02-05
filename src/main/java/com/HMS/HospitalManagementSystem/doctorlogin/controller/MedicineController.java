@@ -20,7 +20,7 @@ import com.HMS.HospitalManagementSystem.doctorlogin.entity.Medicine;
 import com.HMS.HospitalManagementSystem.doctorlogin.repository.MedicineRepository;
 
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/v1/medicines")
 public class MedicineController {
