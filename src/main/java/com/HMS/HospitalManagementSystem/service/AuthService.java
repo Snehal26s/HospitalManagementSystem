@@ -15,20 +15,31 @@ public class AuthService {
 
     // ✅ Updated method to include role
     public User validateLogin(String username, String password, String role) {
-        if (username == null || password == null || role == null) return null;
+        if (username == null || password == null || role == null) {
+            return null;
+        }
 
         User user = userRepository.findByUsername(username.trim()).orElse(null);
 
-        if (user != null) {
-            String dbPass = user.getPassword().trim();
-            String dbRole = user.getRole().trim();
-
-            if (dbPass.equals(password.trim()) && dbRole.equalsIgnoreCase(role.trim())) {
-                return user;
-            }
+        if (user == null) {
+            return null;
         }
+
+        // Normalize values
+        String dbPassword = user.getPassword() == null ? "" : user.getPassword().trim();
+        String dbRole = user.getRole() == null ? "" : user.getRole().trim();
+
+        String inputPassword = password.trim();
+        String inputRole = role.trim();
+
+        if (dbPassword.equals(inputPassword) &&
+            dbRole.equalsIgnoreCase(inputRole)) {
+            return user;
+        }
+
         return null;
     }
+
 }
 
 
